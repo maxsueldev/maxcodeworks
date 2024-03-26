@@ -1,0 +1,140 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+}
+
+body > span {
+  display: block;
+  padding-top: 60px;
+}
+
+a {
+  cursor: pointer;
+}
+
+.fade-in {
+  width: 100%;
+  height: 100vh;
+  background-color: #343a40;
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 600ms ease;
+}
+
+.modal-opened .fade-in {
+  opacity: .4;
+  z-index: 0;
+}
+
+.open-btn {
+  background-color: #1A73E8;
+  color: #fff;
+  border-radius: 20px;
+  padding: 7px 32px;
+}
+
+.modal {
+  visibility: hidden;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 14%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: margin-top 1.4s;
+  background-color: #fff;
+  border: 1px solid #99979c;
+  border-radius: 6px;
+  z-index: 1;
+}
+
+.modal-opened .modal {
+  visibility: visible;
+  margin-top: 80px;
+}
+
+.header-modal {
+  display: flex;
+  justify-content: space-between;        
+  padding: 10px 20px;
+}
+
+.header-modal h1 {
+  font-size: 20px;
+}
+
+.close {
+  cursor: pointer;
+  padding: 9px 6px;
+}
+
+.close span {
+  display: block;
+  width: 13px;
+  height: 1.5px;
+  background-color: #99979c;
+}
+
+.close span:first-child {
+  transform: rotate(45deg) translate(1.7px, 10%);
+}
+
+.close span:last-child {
+  transform: rotate(-45deg) translate(.8px, 10%);
+}
+
+.content-modal {
+  border-top: 1px solid #99979c;
+  border-bottom: 1px solid #99979c;
+  padding: 14px 0;
+}
+
+form {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+form input {
+  width: 78%;
+  height: 35px;
+  border-radius: 80px;
+  padding: 15px 20px;
+}
+
+form input:focus {
+  outline: #1A73E8;
+  border-color: #1A73E8;
+}
+
+form button {
+  background-color: #1A73E8;
+  color: #fff;
+  font-size: 13px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 5px 14px;
+  margin-top: 2px;
+}
+
+.footer-modal {
+  text-align: right;
+  padding: 12px 20px;
+}
+
+.footer-modal .close {
+  background-color: red;
+  font-size: 14px;
+  color: #fff;
+  border-radius: 7px;
+  padding: 4px 12px;
+}
