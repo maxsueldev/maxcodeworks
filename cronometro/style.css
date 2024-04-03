@@ -1,0 +1,32 @@
+.cronometro {
+    width: fit-content;
+    font-size: 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 6px 14px;
+    margin: 80px auto;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.timerHours::after, .timerMinutes::after {
+    content: ':';
+    margin-left: 4px;
+}
+
+.play, .stop, .reset {
+    cursor: pointer;
+}
+
+.play:hover, .stop:hover, .reset:hover {
+    filter: invert(0.5);                                  
+}

@@ -1,0 +1,95 @@
+<div class="cronometro">
+    <div class="timer">
+      <span class="timerHours">00</span>
+      <span class="timerMinutes">00</span>
+      <span class="timerSeconds">00</span>
+    </div>
+    <div class="controls">
+      <img class="play" alt="play button"
+      src="https://www.svgrepo.com/show/514197/play.svg"
+       width="36px" height="36px" >
+      <img class="stop" alt="stop button"
+      src="https://www.svgrepo.com/show/514251/stop.svg" 
+       width="36px" height="36px" >
+      <img class="reset" alt="reset button" 
+       src="https://www.svgrepo.com/show/501336/reset.svg"
+       width="34px" height="26px" >
+    </div>
+  </div>
+  
+  <script>
+    const timerHoursSpan = 
+      document.querySelector('.timerHours');
+    const timerMinutesSpan = 
+      document.querySelector('.timerMinutes');
+    const timerSecondsSpan = 
+      document.querySelector('.timerSeconds');
+  
+    const controlPlay = 
+      document.querySelector('.play');
+    const controlStop = 
+      document.querySelector('.stop');
+    const controlReset = 
+      document.querySelector('.reset');
+  
+    let timeAtual = [0, 0, 0];
+  
+    function verificaUnidade(horarioAtual) {
+      const dezenaAjustada = 
+        horarioAtual.map(element => {
+          if (element.toString().length === 1) {
+              element = '0' + element;
+          }
+          return element;
+        });
+        return dezenaAjustada;
+    }
+  
+    setInterval(function () {
+      if (controlPlay.classList.contains('active')) {
+          hours = timeAtual[0];
+          minutes = timeAtual[1];
+          seconds = timeAtual[2];
+  
+          seconds++;
+  
+          if (seconds > 59) {
+              minutes++;
+              seconds = 0;
+          }
+  
+          if (minutes > 59) {
+              hours++;
+              minutes = 0;
+          }
+  
+          timeAtual = [hours, minutes, seconds];
+          let time = verificaUnidade([hours, minutes, seconds]);
+  
+          timerHoursSpan.textContent = time[0];
+          timerMinutesSpan.textContent = time[1];
+          timerSecondsSpan.textContent = time[2];
+      }
+  }, 1000);
+  
+  controlPlay.addEventListener('click', function () {
+    controlPlay.classList.toggle('active');
+    controlPlay.classList.contains('active') ? 
+      controlPlay.src = 'https://www.svgrepo.com/show/532514/pause.svg' : 
+    : controlPlay.src = 'https://www.svgrepo.com/show/514197/play.svg';
+  });
+  
+  controlStop.addEventListener('click', function () {
+    timeAtual = [0, 0, 0];
+    controlPlay.classList.remove('active');
+    controlPlay.src = 'https://www.svgrepo.com/show/514197/play.svg';
+    timerHoursSpan.textContent = '00';
+    timerMinutesSpan.textContent = '00';
+    timerSecondsSpan.textContent = '00';
+  });
+  
+  controlReset.addEventListener('click', function () {
+    timeAtual = [0, 0, 0];
+    controlPlay.classList.add('active');
+  });
+  </script>  
